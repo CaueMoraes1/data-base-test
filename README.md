@@ -23,7 +23,7 @@ Este projeto contém scripts SQL para criar, importar e analisar dados relaciona
 ## **Configuração**
 
 1. **Configurar os Caminhos dos Arquivos**:
-   - Edite o arquivo `sqlFiles/00_config.sql` e configure os caminhos dos arquivos CSV, se necessário:
+   - Edite o arquivo `sqlFiles/01_config.sql` e configure os caminhos dos arquivos CSV, se necessário:
      ```sql
      -- Caminho para o arquivo de operadoras
      SET import.operadoras_file_path TO '../preparationFiles/Relatorio_cadop.csv';
@@ -33,21 +33,20 @@ Este projeto contém scripts SQL para criar, importar e analisar dados relaciona
      SET import.demonstracoes_file_path_2 TO '../preparationFiles/4T2024.csv';
      ```
 
-2. **Executar o Arquivo de Configuração**:
-   - Antes de rodar os scripts de importação, execute o arquivo `00_config.sql` no PostgreSQL:
-     ```bash
-     psql -U seu_usuario -d data_base_test -f sqlFiles/00_config.sql
-     ```
-
 
 ## **Execução**
 
 1. **Criar as Tabelas**:
-   - Execute o script `01_create_tables.sql` para criar as tabelas necessárias:
+   - Execute o script `00_create_tables.sql` para criar as tabelas necessárias:
      ```bash
      psql -U seu_usuario -d data_base_test -f sqlFiles/01_create_tables.sql
      ```
 
+2. **Executar o Arquivo de Configuração**:
+   - Antes de rodar os scripts de importação, execute o arquivo `01_config.sql` no PostgreSQL:
+     ```bash
+     psql -U seu_usuario -d data_base_test -f sqlFiles/00_config.sql
+     ``` 
 2. **Importar os Dados**:
    - Execute o script `02_import_data.sql` para importar os dados dos arquivos CSV:
      ```bash
